@@ -1,20 +1,28 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { NavLink } from "react-router-dom";
+import AOS from 'aos';
+import "aos/dist/aos.css";
 
 
 const Card = ({items}) => {
+  useEffect(()=>{
+    AOS.init({
+      duration : 1000
+    });
+  },[])
   return (
     <>
-      <div className='menu_items container-fluid mt-5'>
+      <div className='menu_items container-fluid mt-5' >
         <div className='row'>
           <div className='col-11 mx-auto'>
-            <div className='card_container row my-xl-5 d-flex justify-content-center align-items-center'>
+            <div className='card_container row my-xl-5 d-flex justify-content-center align-items-center' data-aos={"fade-up"}>
               {
                 items.map((elem) => {
                   const {id,name,image,price,description} = elem;
                   return (
                     <div className='item1 d-flex justify-content-center col-11 col-md-6 col-lg-6 col-xl-5 m-4' key={id}>
-                      <div className='row Item_inside d-flex justify-content-center align-items-center' >
+                      <div className='row Item_inside d-flex justify-content-center align-items-center'  >
                         <div className='col-12 col-md-12 col-lg-4 img_div container-fluid'>
                           <img src={image} alt="menuPic" className='img-fluid' />
                         </div>
